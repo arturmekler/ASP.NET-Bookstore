@@ -86,25 +86,10 @@ namespace Bookstore
                 }
             }
 
-            using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionString))
-            {
-                sqlCon.Open();
+            orderTable(MySQLConnectionStringValue);
 
-                //string queryOrders = "SELECT nazwisko FROM zamowienia WHERE login='" + login + "' AND haslo='" + password + "'";
-                string queryOrders = "SELECT ksiazki.tytul AS 'Tytuł', ksiazki.imieautora AS 'Imie autora', ksiazki.nazwiskoautora AS 'Nazwisko autora' FROM ksiazki INNER JOIN zamowienia ON " +
-                    "zamowienia.idksiazki = ksiazki.idksiazki WHERE zamowienia.idklienta=" + userIDLabel.Text;
-                    
-                    
 
-                MySqlCommand commandDatabaseOrders = new MySqlCommand(queryOrders, sqlCon);
-                MySqlDataReader myReaderOrders = commandDatabaseOrders.ExecuteReader();
 
-                DataTable dtbl = new DataTable();
-
-                dtbl.Load(myReaderOrders);
-                ordersDataGridView.DataSource = dtbl;
-
-            }
         }
 
         private void searchQuery(string MySQLConnectionString)
@@ -125,9 +110,53 @@ namespace Bookstore
             }
         }
 
+        private void AddOrder(string MySQLConnectionString)
+        {
+            using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionString))
+            {
+                sqlCon.Open();
+
+                int bookID = Convert.ToInt32(searchResultDataGridView.SelectedRows[0].Cells[0].Value);
+                string queryAddOrder = "INSERT INTO zamowienia (idklienta, idksiazki, status) VALUES ("+userIDLabel.Text+","+bookID+","+"''"+")";
+
+                MySqlCommand commandDatabaseQueryAddOrder = new MySqlCommand(queryAddOrder, sqlCon);
+                MySqlDataReader myReaderqueryAddOrder = commandDatabaseQueryAddOrder.ExecuteReader();
+
+            }
+        }
+
+        private void orderTable(string MySQLConnectionString)
+        {
+            using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionString))
+            {
+                sqlCon.Open();
+
+                //string queryOrders = "SELECT nazwisko FROM zamowienia WHERE login='" + login + "' AND haslo='" + password + "'";
+                string queryOrders = "SELECT ksiazki.tytul AS 'Tytuł', ksiazki.imieautora AS 'Imie autora', ksiazki.nazwiskoautora AS 'Nazwisko autora' FROM ksiazki INNER JOIN zamowienia ON " +
+                    "zamowienia.idksiazki = ksiazki.idksiazki WHERE zamowienia.idklienta=" + userIDLabel.Text;
+
+
+
+                MySqlCommand commandDatabaseOrders = new MySqlCommand(queryOrders, sqlCon);
+                MySqlDataReader myReaderOrders = commandDatabaseOrders.ExecuteReader();
+
+                DataTable dtbl = new DataTable();
+
+                dtbl.Load(myReaderOrders);
+                ordersDataGridView.DataSource = dtbl;
+
+            }
+        }
+
         private void searchButton_Click(object sender, EventArgs e)
         {
             searchQuery(MySQLConnectionStringValue);
+        }
+
+        private void buyButton_Click(object sender, EventArgs e)
+        {
+            AddOrder(MySQLConnectionStringValue);
+            orderTable(MySQLConnectionStringValue);
         }
     }
 }

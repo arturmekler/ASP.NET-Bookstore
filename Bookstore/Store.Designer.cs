@@ -129,6 +129,7 @@
             this.buyButton.TabIndex = 6;
             this.buyButton.Text = "Kup";
             this.buyButton.UseVisualStyleBackColor = true;
+            this.buyButton.Click += new System.EventHandler(this.buyButton_Click);
             // 
             // label3
             // 
