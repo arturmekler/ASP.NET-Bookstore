@@ -36,7 +36,6 @@
             this.searchResultDataGridView = new System.Windows.Forms.DataGridView();
             this.buyButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.vorNameLabel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -145,25 +144,14 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Wynik wyszukiwania";
             // 
-            // label4
-            // 
-            this.label4.AllowDrop = true;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(26, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(116, 16);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Dane użytkownika";
-            // 
             // vorNameLabel
             // 
             this.vorNameLabel.AllowDrop = true;
             this.vorNameLabel.AutoSize = true;
-            this.vorNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.vorNameLabel.Location = new System.Drawing.Point(369, 9);
+            this.vorNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.vorNameLabel.Location = new System.Drawing.Point(337, 9);
             this.vorNameLabel.Name = "vorNameLabel";
-            this.vorNameLabel.Size = new System.Drawing.Size(64, 16);
+            this.vorNameLabel.Size = new System.Drawing.Size(71, 16);
             this.vorNameLabel.TabIndex = 9;
             this.vorNameLabel.Text = "vorName";
             // 
@@ -172,7 +160,7 @@
             this.label5.AllowDrop = true;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(334, 9);
+            this.label5.Location = new System.Drawing.Point(302, 9);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 16);
             this.label5.TabIndex = 10;
@@ -183,7 +171,7 @@
             this.label6.AllowDrop = true;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.Location = new System.Drawing.Point(463, 9);
+            this.label6.Location = new System.Drawing.Point(431, 9);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 16);
             this.label6.TabIndex = 12;
@@ -193,10 +181,10 @@
             // 
             this.nameLabel.AllowDrop = true;
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.nameLabel.Location = new System.Drawing.Point(538, 9);
+            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.nameLabel.Location = new System.Drawing.Point(506, 9);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(42, 16);
+            this.nameLabel.Size = new System.Drawing.Size(46, 16);
             this.nameLabel.TabIndex = 11;
             this.nameLabel.Text = "name";
             // 
@@ -205,7 +193,7 @@
             this.label7.AllowDrop = true;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.Location = new System.Drawing.Point(177, 9);
+            this.label7.Location = new System.Drawing.Point(145, 9);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(99, 16);
             this.label7.TabIndex = 13;
@@ -215,10 +203,10 @@
             // 
             this.userIDLabel.AllowDrop = true;
             this.userIDLabel.AutoSize = true;
-            this.userIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.userIDLabel.Location = new System.Drawing.Point(282, 9);
+            this.userIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.userIDLabel.Location = new System.Drawing.Point(250, 9);
             this.userIDLabel.Name = "userIDLabel";
-            this.userIDLabel.Size = new System.Drawing.Size(21, 16);
+            this.userIDLabel.Size = new System.Drawing.Size(23, 16);
             this.userIDLabel.TabIndex = 14;
             this.userIDLabel.Text = "ID";
             // 
@@ -271,6 +259,7 @@
             this.deleteButton.TabIndex = 16;
             this.deleteButton.Text = "Usuń zamówienie";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // StoreForm
             // 
@@ -284,7 +273,6 @@
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.vorNameLabel);
-            this.Controls.Add(this.label4);
             this.Name = "StoreForm";
             this.Text = "StoreForm";
             ((System.ComponentModel.ISupportInitialize)(this.ordersDataGridView)).EndInit();
@@ -309,7 +297,6 @@
         private System.Windows.Forms.DataGridView searchResultDataGridView;
         private System.Windows.Forms.Button buyButton;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label vorNameLabel;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;

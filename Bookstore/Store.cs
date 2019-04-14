@@ -125,6 +125,23 @@ namespace Bookstore
             }
         }
 
+        private void deleteOrder(string MySQLConnectionString)
+        {
+            using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionString))
+            {
+                sqlCon.Open();
+
+                int orderID = Convert.ToInt32(ordersDataGridView.SelectedRows[0].Cells[0].Value);
+                string queryDeleteOrder = "DELETE FROM zamowienia WHERE idzamowienia ="+orderID;
+
+                MySqlCommand commandDatabaseQueryDeleteOrder = new MySqlCommand(queryDeleteOrder, sqlCon);
+                MySqlDataReader myReaderqueryDeleteOrder = commandDatabaseQueryDeleteOrder.ExecuteReader();
+
+            }
+        }
+
+
+
         private void orderTable(string MySQLConnectionString)
         {
             using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionString))
@@ -132,7 +149,7 @@ namespace Bookstore
                 sqlCon.Open();
 
                 //string queryOrders = "SELECT nazwisko FROM zamowienia WHERE login='" + login + "' AND haslo='" + password + "'";
-                string queryOrders = "SELECT ksiazki.tytul AS 'Tytuł', ksiazki.imieautora AS 'Imie autora', ksiazki.nazwiskoautora AS 'Nazwisko autora' FROM ksiazki INNER JOIN zamowienia ON " +
+                string queryOrders = "SELECT zamowienia.idzamowienia, ksiazki.tytul AS 'Tytuł', ksiazki.imieautora AS 'Imie autora', ksiazki.nazwiskoautora AS 'Nazwisko autora' FROM ksiazki INNER JOIN zamowienia ON " +
                     "zamowienia.idksiazki = ksiazki.idksiazki WHERE zamowienia.idklienta=" + userIDLabel.Text;
 
 
@@ -157,6 +174,13 @@ namespace Bookstore
         {
             AddOrder(MySQLConnectionStringValue);
             orderTable(MySQLConnectionStringValue);
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            deleteOrder(MySQLConnectionStringValue);
+            orderTable(MySQLConnectionStringValue);
+
         }
     }
 }
