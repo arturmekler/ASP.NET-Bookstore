@@ -88,6 +88,8 @@
             this.ordersDataGridView.AllowUserToAddRows = false;
             this.ordersDataGridView.AllowUserToDeleteRows = false;
             this.ordersDataGridView.AllowUserToOrderColumns = true;
+            this.ordersDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.ordersDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.ordersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ordersDataGridView.Location = new System.Drawing.Point(6, 36);
             this.ordersDataGridView.Name = "ordersDataGridView";
@@ -110,6 +112,8 @@
             this.searchResultDataGridView.AllowUserToAddRows = false;
             this.searchResultDataGridView.AllowUserToDeleteRows = false;
             this.searchResultDataGridView.AllowUserToOrderColumns = true;
+            this.searchResultDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.searchResultDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.searchResultDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.searchResultDataGridView.Location = new System.Drawing.Point(42, 122);
             this.searchResultDataGridView.Name = "searchResultDataGridView";
