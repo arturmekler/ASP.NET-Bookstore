@@ -35,6 +35,7 @@ namespace Bookstore
                 string password = passwordTextBox.Text;
 
                 string query = "SELECT * FROM users WHERE login='" + login + "' AND haslo='" + password + "'";
+                
 
                 MySqlCommand commandDatabase = new MySqlCommand(query, sqlCon);
 
@@ -44,14 +45,20 @@ namespace Bookstore
                     if (myReader.HasRows)
                     {
                         MessageBox.Show("Dziala");
-                        StoreForm store = new StoreForm();
+
+                        
+                        StoreForm store = new StoreForm(login, password, MySQLConnectionString);
                         store.Show();
-                        this.Close();
+                        
+                        this.Hide();
+                        
+                        store.Closed += (s, args) => this.Close();
+                        store.Show();
 
                     }
                     else
                     {
-                        MessageBox.Show("Nie poprawny login lub hasło");
+                        MessageBox.Show("Nie poprawny login lub hasło","Błąd logowania");
                     }
                 }
                 catch (Exception e)
