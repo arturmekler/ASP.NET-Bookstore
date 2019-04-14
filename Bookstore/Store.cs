@@ -13,12 +13,14 @@ namespace Bookstore
 {
     public partial class StoreForm : Form
     {
+        public string MySQLConnectionStringValue;
 
         public StoreForm(string login, string password, string MySQLConnectionString)
         {
-            InitializeComponent();
-            int userIDValue;
+            MySQLConnectionStringValue = MySQLConnectionString;
 
+            InitializeComponent();
+            
             using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionString))
             {
                 sqlCon.Open();
@@ -103,6 +105,29 @@ namespace Bookstore
                 ordersDataGridView.DataSource = dtbl;
 
             }
+        }
+
+        private void searchQuery(string MySQLConnectionString)
+        {
+            using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionString))
+            {
+                sqlCon.Open();
+
+                string querySearch = "SELECT * FROM ksiazki WHERE tytul LIKE" + "'%" + searchTextBox.Text + "%'";
+
+                MySqlCommand commandDatabaseQuerySearch = new MySqlCommand(querySearch, sqlCon);
+                MySqlDataReader myReaderQuerySearch = commandDatabaseQuerySearch.ExecuteReader();
+
+                DataTable dtbl = new DataTable();
+
+                dtbl.Load(myReaderQuerySearch);
+                searchResultDataGridView.DataSource = dtbl;
+            }
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            searchQuery(MySQLConnectionStringValue);
         }
     }
 }
