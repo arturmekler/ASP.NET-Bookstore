@@ -41,6 +41,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.userIDLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ordersDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchResultDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -77,10 +79,14 @@
             // 
             // ordersDataGridView
             // 
+            this.ordersDataGridView.AllowUserToAddRows = false;
+            this.ordersDataGridView.AllowUserToDeleteRows = false;
+            this.ordersDataGridView.AllowUserToOrderColumns = true;
             this.ordersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ordersDataGridView.Location = new System.Drawing.Point(285, 130);
             this.ordersDataGridView.Name = "ordersDataGridView";
-            this.ordersDataGridView.Size = new System.Drawing.Size(240, 150);
+            this.ordersDataGridView.ReadOnly = true;
+            this.ordersDataGridView.Size = new System.Drawing.Size(460, 150);
             this.ordersDataGridView.TabIndex = 3;
             // 
             // searchButton
@@ -94,9 +100,13 @@
             // 
             // searchResultDataGridView
             // 
+            this.searchResultDataGridView.AllowUserToAddRows = false;
+            this.searchResultDataGridView.AllowUserToDeleteRows = false;
+            this.searchResultDataGridView.AllowUserToOrderColumns = true;
             this.searchResultDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.searchResultDataGridView.Location = new System.Drawing.Point(28, 212);
             this.searchResultDataGridView.Name = "searchResultDataGridView";
+            this.searchResultDataGridView.ReadOnly = true;
             this.searchResultDataGridView.Size = new System.Drawing.Size(224, 35);
             this.searchResultDataGridView.TabIndex = 5;
             // 
@@ -175,11 +185,35 @@
             this.nameLabel.TabIndex = 11;
             this.nameLabel.Text = "name";
             // 
+            // label7
+            // 
+            this.label7.AllowDrop = true;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label7.Location = new System.Drawing.Point(177, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(99, 16);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "ID użytkownika:";
+            // 
+            // userIDLabel
+            // 
+            this.userIDLabel.AllowDrop = true;
+            this.userIDLabel.AutoSize = true;
+            this.userIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.userIDLabel.Location = new System.Drawing.Point(282, 9);
+            this.userIDLabel.Name = "userIDLabel";
+            this.userIDLabel.Size = new System.Drawing.Size(21, 16);
+            this.userIDLabel.TabIndex = 14;
+            this.userIDLabel.Text = "ID";
+            // 
             // StoreForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(554, 315);
+            this.ClientSize = new System.Drawing.Size(818, 315);
+            this.Controls.Add(this.userIDLabel);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.label5);
@@ -217,5 +251,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label userIDLabel;
     }
 }
