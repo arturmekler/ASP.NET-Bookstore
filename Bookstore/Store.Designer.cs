@@ -46,6 +46,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.deleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ordersDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchResultDataGridView)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -94,6 +95,7 @@
             this.ordersDataGridView.Location = new System.Drawing.Point(6, 36);
             this.ordersDataGridView.Name = "ordersDataGridView";
             this.ordersDataGridView.ReadOnly = true;
+            this.ordersDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ordersDataGridView.Size = new System.Drawing.Size(596, 276);
             this.ordersDataGridView.TabIndex = 3;
             // 
@@ -118,6 +120,7 @@
             this.searchResultDataGridView.Location = new System.Drawing.Point(42, 122);
             this.searchResultDataGridView.Name = "searchResultDataGridView";
             this.searchResultDataGridView.ReadOnly = true;
+            this.searchResultDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.searchResultDataGridView.Size = new System.Drawing.Size(466, 128);
             this.searchResultDataGridView.TabIndex = 5;
             // 
@@ -226,18 +229,19 @@
             this.tabControl1.Location = new System.Drawing.Point(29, 60);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(640, 371);
+            this.tabControl1.Size = new System.Drawing.Size(640, 369);
             this.tabControl1.TabIndex = 15;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.deleteButton);
             this.tabPage1.Controls.Add(this.ordersDataGridView);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(632, 345);
+            this.tabPage1.Size = new System.Drawing.Size(632, 343);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Twoje zamówienia";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -254,10 +258,19 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(632, 345);
+            this.tabPage2.Size = new System.Drawing.Size(632, 343);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Wyszukaj";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Location = new System.Drawing.Point(394, 7);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(153, 23);
+            this.deleteButton.TabIndex = 16;
+            this.deleteButton.Text = "Usuń zamówienie";
+            this.deleteButton.UseVisualStyleBackColor = true;
             // 
             // StoreForm
             // 
@@ -306,5 +319,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button deleteButton;
     }
 }
