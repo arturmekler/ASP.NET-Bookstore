@@ -22,10 +22,10 @@ namespace Bookstore
 
         private void logInButton_Click(object sender, EventArgs e)
         {
-            query();
+            queryLog();
         }
 
-        private void query()
+        private void queryLog()
         {
             using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionString))
             {
@@ -65,10 +65,6 @@ namespace Bookstore
                 {
                     MessageBox.Show("Query error: " + e.Message);
                 }
-
-
-
-
             }
 
         }

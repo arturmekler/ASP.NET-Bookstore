@@ -34,6 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.logInButton = new System.Windows.Forms.Button();
+            this.registerButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // loginTextBox
@@ -91,7 +92,7 @@
             // logInButton
             // 
             this.logInButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.logInButton.Location = new System.Drawing.Point(164, 152);
+            this.logInButton.Location = new System.Drawing.Point(98, 154);
             this.logInButton.Name = "logInButton";
             this.logInButton.Size = new System.Drawing.Size(122, 49);
             this.logInButton.TabIndex = 5;
@@ -99,11 +100,22 @@
             this.logInButton.UseVisualStyleBackColor = true;
             this.logInButton.Click += new System.EventHandler(this.logInButton_Click);
             // 
+            // registerButton
+            // 
+            this.registerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.registerButton.Location = new System.Drawing.Point(238, 154);
+            this.registerButton.Name = "registerButton";
+            this.registerButton.Size = new System.Drawing.Size(122, 49);
+            this.registerButton.TabIndex = 6;
+            this.registerButton.Text = "Rejestracja";
+            this.registerButton.UseVisualStyleBackColor = true;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(450, 236);
+            this.Controls.Add(this.registerButton);
             this.Controls.Add(this.logInButton);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.label1);
@@ -125,6 +137,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.Button logInButton;
+        private System.Windows.Forms.Button registerButton;
     }
 }
 
