@@ -163,6 +163,7 @@
             this.regButton.TabIndex = 10;
             this.regButton.Text = "Zaloguj";
             this.regButton.UseVisualStyleBackColor = true;
+            this.regButton.Click += new System.EventHandler(this.regButton_Click);
             // 
             // RegisterForm
             // 
