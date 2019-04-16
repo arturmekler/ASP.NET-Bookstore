@@ -95,7 +95,9 @@ namespace Bookstore
             {
                 sqlCon.Open();
 
-                string querySearch = "SELECT * FROM ksiazki WHERE tytul LIKE" + "'%" + searchTextBox.Text + "%'";
+                string querySearch = "SELECT idksiazki AS 'ID ksiazki', imieautora AS 'Imie autora'," +
+                    "nazwiskoautora AS 'Nazwisko autora',tytul AS 'Tytul', " +
+                    "cena AS 'Cena' FROM ksiazki WHERE tytul LIKE" + "'%" + searchTextBox.Text + "%'";
 
                 MySqlCommand commandDatabaseQuerySearch = new MySqlCommand(querySearch, sqlCon);
                 MySqlDataReader myReaderQuerySearch = commandDatabaseQuerySearch.ExecuteReader();
@@ -112,13 +114,20 @@ namespace Bookstore
             using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionString))
             {
                 sqlCon.Open();
+                try
+                {
+                    int bookID = Convert.ToInt32(searchResultDataGridView.SelectedRows[0].Cells[0].Value);
+                    string queryAddOrder = "INSERT INTO zamowienia (idklienta, idksiazki, status) VALUES (" + userIDLabel.Text + "," + bookID + "," + "''" + ")";
 
-                int bookID = Convert.ToInt32(searchResultDataGridView.SelectedRows[0].Cells[0].Value);
-                string queryAddOrder = "INSERT INTO zamowienia (idklienta, idksiazki, status) VALUES ("+userIDLabel.Text+","+bookID+","+"''"+")";
+                    MySqlCommand commandDatabaseQueryAddOrder = new MySqlCommand(queryAddOrder, sqlCon);
+                    MySqlDataReader myReaderqueryAddOrder = commandDatabaseQueryAddOrder.ExecuteReader();
 
-                MySqlCommand commandDatabaseQueryAddOrder = new MySqlCommand(queryAddOrder, sqlCon);
-                MySqlDataReader myReaderqueryAddOrder = commandDatabaseQueryAddOrder.ExecuteReader();
-
+                    MessageBox.Show("Dokonano zakupu", "Komunikat");
+                }
+                catch(Exception exc)
+                {
+                    MessageBox.Show("Nie wybrano ksiązki",exc.Message);
+                }
             }
         }
 
@@ -145,11 +154,10 @@ namespace Bookstore
             {
                 sqlCon.Open();
 
-                //string queryOrders = "SELECT nazwisko FROM zamowienia WHERE login='" + login + "' AND haslo='" + password + "'";
-                string queryOrders = "SELECT zamowienia.idzamowienia, ksiazki.tytul AS 'Tytuł', ksiazki.imieautora AS 'Imie autora', ksiazki.nazwiskoautora AS 'Nazwisko autora' FROM ksiazki INNER JOIN zamowienia ON " +
+                string queryOrders = "SELECT zamowienia.idzamowienia, ksiazki.tytul AS 'Tytuł', ksiazki.imieautora AS" +
+                    " 'Imie autora', ksiazki.nazwiskoautora AS 'Nazwisko autora', ksiazki.cena AS 'Cena'" +
+                    " FROM ksiazki INNER JOIN zamowienia ON " +
                     "zamowienia.idksiazki = ksiazki.idksiazki WHERE zamowienia.idklienta=" + userIDLabel.Text;
-
-
 
                 MySqlCommand commandDatabaseOrders = new MySqlCommand(queryOrders, sqlCon);
                 MySqlDataReader myReaderOrders = commandDatabaseOrders.ExecuteReader();
@@ -177,7 +185,7 @@ namespace Bookstore
         {
             deleteOrder(MySQLConnectionStringValue);
             orderTable(MySQLConnectionStringValue);
-
+            MessageBox.Show("Usunięto zamówienie","Komunikat");
         }
     }
 }

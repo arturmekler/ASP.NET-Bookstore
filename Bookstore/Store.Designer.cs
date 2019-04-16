@@ -98,7 +98,7 @@
             this.ordersDataGridView.Name = "ordersDataGridView";
             this.ordersDataGridView.ReadOnly = true;
             this.ordersDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ordersDataGridView.Size = new System.Drawing.Size(596, 276);
+            this.ordersDataGridView.Size = new System.Drawing.Size(596, 551);
             this.ordersDataGridView.TabIndex = 3;
             // 
             // searchButton
@@ -126,12 +126,12 @@
             this.searchResultDataGridView.Name = "searchResultDataGridView";
             this.searchResultDataGridView.ReadOnly = true;
             this.searchResultDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.searchResultDataGridView.Size = new System.Drawing.Size(466, 128);
+            this.searchResultDataGridView.Size = new System.Drawing.Size(466, 550);
             this.searchResultDataGridView.TabIndex = 5;
             // 
             // buyButton
             // 
-            this.buyButton.Location = new System.Drawing.Point(433, 265);
+            this.buyButton.Location = new System.Drawing.Point(343, 68);
             this.buyButton.Name = "buyButton";
             this.buyButton.Size = new System.Drawing.Size(75, 23);
             this.buyButton.TabIndex = 6;
@@ -226,7 +226,7 @@
             this.tabControl1.Location = new System.Drawing.Point(29, 60);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(640, 369);
+            this.tabControl1.Size = new System.Drawing.Size(640, 644);
             this.tabControl1.TabIndex = 15;
             // 
             // tabPage1
@@ -238,7 +238,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(632, 343);
+            this.tabPage1.Size = new System.Drawing.Size(632, 618);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Twoje zamówienia";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -265,7 +265,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(632, 343);
+            this.tabPage2.Size = new System.Drawing.Size(632, 618);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Wyszukaj";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -274,7 +274,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(687, 483);
+            this.ClientSize = new System.Drawing.Size(687, 570);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.userIDLabel);
             this.Controls.Add(this.label7);
