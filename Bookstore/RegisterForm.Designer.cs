@@ -182,6 +182,7 @@
             this.Controls.Add(this.vornameRegTextBox);
             this.Controls.Add(this.passwordRegTextBox);
             this.Controls.Add(this.loginRegTextBox);
+            this.MaximizeBox = false;
             this.Name = "RegisterForm";
             this.Text = "RegisterForm";
             this.ResumeLayout(false);

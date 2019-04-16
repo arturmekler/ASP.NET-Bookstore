@@ -44,8 +44,8 @@
             this.userIDLabel = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.ordersDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchResultDataGridView)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -88,6 +88,9 @@
             this.ordersDataGridView.AllowUserToAddRows = false;
             this.ordersDataGridView.AllowUserToDeleteRows = false;
             this.ordersDataGridView.AllowUserToOrderColumns = true;
+            this.ordersDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ordersDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.ordersDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.ordersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -113,6 +116,9 @@
             this.searchResultDataGridView.AllowUserToAddRows = false;
             this.searchResultDataGridView.AllowUserToDeleteRows = false;
             this.searchResultDataGridView.AllowUserToOrderColumns = true;
+            this.searchResultDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.searchResultDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.searchResultDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.searchResultDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -212,6 +218,9 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(29, 60);
@@ -234,6 +243,16 @@
             this.tabPage1.Text = "Twoje zamówienia";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // deleteButton
+            // 
+            this.deleteButton.Location = new System.Drawing.Point(394, 7);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(153, 23);
+            this.deleteButton.TabIndex = 16;
+            this.deleteButton.Text = "Usuń zamówienie";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.searchResultDataGridView);
@@ -250,16 +269,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Wyszukaj";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // deleteButton
-            // 
-            this.deleteButton.Location = new System.Drawing.Point(394, 7);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(153, 23);
-            this.deleteButton.TabIndex = 16;
-            this.deleteButton.Text = "Usuń zamówienie";
-            this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // StoreForm
             // 

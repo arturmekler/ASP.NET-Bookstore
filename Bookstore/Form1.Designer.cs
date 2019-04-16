@@ -123,6 +123,7 @@
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.loginLabel);
             this.Controls.Add(this.loginTextBox);
+            this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.Text = "LoginForm";
             this.ResumeLayout(false);
