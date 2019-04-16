@@ -29,14 +29,23 @@ namespace Bookstore
 
         private void queryRegister(string MySQLConnectionStringValue)
         {
+            // writes values to variables and checks whether the values are 
+            // well entered and whether the entered login already exists.
+            // If it is ok, it adds a new user to the data phase and logs in to the "store" panel
+
+
             string login = loginRegTextBox.Text;
             string password = passwordRegTextBox.Text;
             string vorname = vornameRegTextBox.Text;
             string name = nameRegTextBox.Text;
             string locality = localityRegTextBox.Text;
 
-            if(TextBoxCheck(MySQLConnectionStringValue,login,password,vorname,name,locality) && 
-                LoginCheck(MySQLConnectionStringValue,login))
+            // checking if the values have been entered correctly or if the login already exists.
+            // Returns true if functions TextBoxCheck = True AND LoginCheck is true
+            // Returns false, otherwise
+
+            if (TextBoxCheck(MySQLConnectionStringValue,login,password,vorname,name,locality) && 
+                LoginCheck(MySQLConnectionStringValue,login)) 
             {
                 using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionStringValue))
                 {
@@ -47,18 +56,18 @@ namespace Bookstore
                         + "'"+ name + "'"+ "," + "'"+ locality + "'" + ")";
 
                     MySqlCommand commandDatabase = new MySqlCommand(queryRegist, sqlCon);
-
                     try
                     {
                         MySqlDataReader myReader = commandDatabase.ExecuteReader();
-                        
-                            StoreForm store = new StoreForm(login, password, MySQLConnectionStringValue);
-                            store.Show();
 
-                            this.Hide();
+                        // creating a new Form (Store)
+                        StoreForm store = new StoreForm(login, password, MySQLConnectionStringValue);
+                        store.Show();
 
-                            store.Closed += (s, args) => this.Close();
-                            store.Show();
+                        // closing RegisterForm
+                        this.Hide();
+                        store.Closed += (s, args) => this.Close();
+                        store.Show();
                     }
 
                     catch (Exception e)
@@ -67,14 +76,15 @@ namespace Bookstore
                     }
                 }
             }
-
-            
-           
         }
 
         private bool TextBoxCheck(string MySQLConnectionStringValue, string login, string password, string vorname,
             string name, string locality)
         {
+            // checks if the values in the TextBox in RegisterForm are not empty. 
+            // Return false if they are empty.
+            // Return true if values are not empty.
+
             if (loginRegTextBox.Text == "" || passwordRegTextBox.Text == "" || vornameRegTextBox.Text == ""
                 ||nameRegTextBox.Text == "" || localityRegTextBox.Text == "")
             {
@@ -88,6 +98,10 @@ namespace Bookstore
         }
         private bool LoginCheck(string MySQLConnectionStringValue, string login)
         {
+            // checks whether a login already exists. 
+            // Returns false if the login already exists
+            // Returns true if the login doesn't exist
+
             using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionStringValue))
             {
                 sqlCon.Open();
@@ -107,7 +121,6 @@ namespace Bookstore
                     {
                         return true;
                     }
-                    
                 }
                 else
                 {

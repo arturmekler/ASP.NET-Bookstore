@@ -27,15 +27,16 @@ namespace Bookstore
 
         private void queryLog()
         {
+            // Checks if the login and password are correct
+            // If they are correct then it opens a new window with Store
+
             using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionString))
             {
                 sqlCon.Open();
 
                 string login = loginTextBox.Text;
                 string password = passwordTextBox.Text;
-
                 string query = "SELECT * FROM users WHERE login='" + login + "' AND haslo='" + password + "'";
-                
 
                 MySqlCommand commandDatabase = new MySqlCommand(query, sqlCon);
 
@@ -46,15 +47,14 @@ namespace Bookstore
                     {
                         MessageBox.Show("Dziala");
 
-                        
+                        // creating a new Form (Store)
                         StoreForm store = new StoreForm(login, password, MySQLConnectionString);
                         store.Show();
-                        
+
+                        // closing LoginForm
                         this.Hide();
-                        
                         store.Closed += (s, args) => this.Close();
                         store.Show();
-
                     }
                     else
                     {
@@ -66,15 +66,16 @@ namespace Bookstore
                     MessageBox.Show("Query error: " + e.Message);
                 }
             }
-
         }
 
         private void registerButton_Click(object sender, EventArgs e)
         {
+            // creating a new Form (RegisterForm)
             RegisterForm store = new RegisterForm(MySQLConnectionString);
             store.Show();
-            this.Hide();
 
+            // closing LoginForm
+            this.Hide();
             store.Closed += (s, args) => this.Close();
             store.Show();
         }

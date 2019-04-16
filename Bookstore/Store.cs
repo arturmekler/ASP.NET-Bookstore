@@ -17,12 +17,16 @@ namespace Bookstore
 
         public StoreForm(string login, string password, string MySQLConnectionString)
         {
+            //creates new Forms and writes individual user data to labels
+
             MySQLConnectionStringValue = MySQLConnectionString;
 
             InitializeComponent();
             
             using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionString))
             {
+                // writes client's ID to label
+
                 sqlCon.Open();
 
                 string queryID = "SELECT idklienta FROM users WHERE login='" + login + "' AND haslo='" + password + "'";
@@ -40,6 +44,8 @@ namespace Bookstore
 
             using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionString))
             {
+                // writes client's vorname to label
+
                 sqlCon.Open();
 
                 string queryVorname = "SELECT imie FROM users WHERE login='" + login + "' AND haslo='" + password + "'";
@@ -56,22 +62,7 @@ namespace Bookstore
 
             using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionString))
             {
-                sqlCon.Open();
-
-                string queryName = "SELECT nazwisko FROM users WHERE login='" + login + "' AND haslo='" + password + "'";
-
-                MySqlCommand commandDatabaseName = new MySqlCommand(queryName, sqlCon);
-                MySqlDataReader myReaderName = commandDatabaseName.ExecuteReader();
-
-                if (myReaderName.Read())
-                {
-                    string userName = myReaderName.GetString(0);
-                    nameLabel.Text = userName.ToString();
-                }
-            }
-
-            using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionString))
-            {
+                // writes name's client to label
                 sqlCon.Open();
 
                 string queryName = "SELECT nazwisko FROM users WHERE login='" + login + "' AND haslo='" + password + "'";
@@ -91,6 +82,8 @@ namespace Bookstore
 
         private void searchQuery(string MySQLConnectionString)
         {
+            // searches for books by name and writes into dataGridView
+
             using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionString))
             {
                 sqlCon.Open();
@@ -111,6 +104,7 @@ namespace Bookstore
 
         private void AddOrder(string MySQLConnectionString)
         {
+            // adds the selected order 
             using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionString))
             {
                 sqlCon.Open();
@@ -133,6 +127,7 @@ namespace Bookstore
 
         private void deleteOrder(string MySQLConnectionString)
         {
+            // deletes the selected order
             using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionString))
             {
                 sqlCon.Open();
@@ -142,7 +137,6 @@ namespace Bookstore
 
                 MySqlCommand commandDatabaseQueryDeleteOrder = new MySqlCommand(queryDeleteOrder, sqlCon);
                 MySqlDataReader myReaderqueryDeleteOrder = commandDatabaseQueryDeleteOrder.ExecuteReader();
-
             }
         }
 
@@ -150,6 +144,8 @@ namespace Bookstore
 
         private void orderTable(string MySQLConnectionString)
         {
+            // writes to the table all orders that the user has
+
             using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionString))
             {
                 sqlCon.Open();
@@ -166,7 +162,6 @@ namespace Bookstore
 
                 dtbl.Load(myReaderOrders);
                 ordersDataGridView.DataSource = dtbl;
-
             }
         }
 
