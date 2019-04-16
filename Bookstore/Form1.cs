@@ -71,7 +71,12 @@ namespace Bookstore
 
         private void registerButton_Click(object sender, EventArgs e)
         {
+            RegisterForm store = new RegisterForm(MySQLConnectionString);
+            store.Show();
+            this.Hide();
 
+            store.Closed += (s, args) => this.Close();
+            store.Show();
         }
     }
 }

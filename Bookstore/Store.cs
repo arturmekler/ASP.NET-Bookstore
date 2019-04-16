@@ -87,9 +87,6 @@ namespace Bookstore
             }
 
             orderTable(MySQLConnectionStringValue);
-
-
-
         }
 
         private void searchQuery(string MySQLConnectionString)

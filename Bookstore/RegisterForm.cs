@@ -24,52 +24,98 @@ namespace Bookstore
 
         private void regButton_Click(object sender, EventArgs e)
         {
-
+            queryRegister(MySQLConnectionStringValue);
         }
 
         private void queryRegister(string MySQLConnectionStringValue)
+        {
+            string login = loginRegTextBox.Text;
+            string password = passwordRegTextBox.Text;
+            string vorname = vornameRegTextBox.Text;
+            string name = nameRegTextBox.Text;
+            string locality = localityRegTextBox.Text;
+
+            if(TextBoxCheck(MySQLConnectionStringValue,login,password,vorname,name,locality) && 
+                LoginCheck(MySQLConnectionStringValue,login))
+            {
+                using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionStringValue))
+                {
+                    sqlCon.Open();
+
+                    string queryRegist = "INSERT INTO users (login, haslo, imie, nazwisko, miejscowosc) VALUES("
+                        + "'"+ login + "'" + "," + "'"+ password + "'"+"," + "'"+ vorname +"'" + "," 
+                        + "'"+ name + "'"+ "," + "'"+ locality + "'" + ")";
+
+                    MySqlCommand commandDatabase = new MySqlCommand(queryRegist, sqlCon);
+
+                    try
+                    {
+                        MySqlDataReader myReader = commandDatabase.ExecuteReader();
+                        
+                            StoreForm store = new StoreForm(login, password, MySQLConnectionStringValue);
+                            store.Show();
+
+                            this.Hide();
+
+                            store.Closed += (s, args) => this.Close();
+                            store.Show();
+                    }
+
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Query error: " + e.Message);
+                    }
+                }
+            }
+
+            
+           
+        }
+
+        private bool TextBoxCheck(string MySQLConnectionStringValue, string login, string password, string vorname,
+            string name, string locality)
+        {
+            if (loginRegTextBox.Text == "" || passwordRegTextBox.Text == "" || vornameRegTextBox.Text == ""
+                ||nameRegTextBox.Text == "" || localityRegTextBox.Text == "")
+            {
+                MessageBox.Show("Uzupełnij wszystkie pola", "Błąd");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        private bool LoginCheck(string MySQLConnectionStringValue, string login)
         {
             using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionStringValue))
             {
                 sqlCon.Open();
 
-                string login = loginRegTextBox.Text;
-                string password = passwordRegTextBox.Text;
-               
+                string queryLogin = "SELECT login FROM users WHERE login = '" + login+"'";
 
-                string query = "SELECT * FROM users WHERE login='" + login + "' AND haslo='" + password + "'";
-
-
-                MySqlCommand commandDatabase = new MySqlCommand(query, sqlCon);
-
-                try
+                MySqlCommand commandDatabaseLogin = new MySqlCommand(queryLogin, sqlCon);
+                MySqlDataReader myReaderLogin = commandDatabaseLogin.ExecuteReader();
+                if (myReaderLogin.Read())
                 {
-                    MySqlDataReader myReader = commandDatabase.ExecuteReader();
-                    if (myReader.HasRows)
+                    if (myReaderLogin.GetString(0) == login)
                     {
-                        MessageBox.Show("Dziala");
-
-
-                        StoreForm store = new StoreForm(login, password, MySQLConnectionStringValue);
-                        store.Show();
-
-                        this.Hide();
-
-                        store.Closed += (s, args) => this.Close();
-                        store.Show();
-
+                        MessageBox.Show("Dany login już istnieje, proszę zmienić nazwę loginu", "Błąd");
+                        return false;
                     }
                     else
                     {
-                        MessageBox.Show("Nie poprawny login lub hasło", "Błąd logowania");
+                        return true;
                     }
+                    
                 }
-                catch (Exception e)
+                else
                 {
-                    MessageBox.Show("Query error: " + e.Message);
+                    return true;
                 }
             }
 
+            
         }
     }
 }

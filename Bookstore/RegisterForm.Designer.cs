@@ -161,7 +161,7 @@
             this.regButton.Name = "regButton";
             this.regButton.Size = new System.Drawing.Size(122, 49);
             this.regButton.TabIndex = 10;
-            this.regButton.Text = "Zaloguj";
+            this.regButton.Text = "Zarejestruj i zaloguj";
             this.regButton.UseVisualStyleBackColor = true;
             this.regButton.Click += new System.EventHandler(this.regButton_Click);
             // 
