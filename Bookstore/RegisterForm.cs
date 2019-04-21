@@ -104,28 +104,52 @@ namespace Bookstore
 
             using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionStringValue))
             {
-                sqlCon.Open();
+                try
+                {
+                    sqlCon.Open();
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
 
                 string queryLogin = "SELECT login FROM users WHERE login = '" + login+"'";
 
-                MySqlCommand commandDatabaseLogin = new MySqlCommand(queryLogin, sqlCon);
-                MySqlDataReader myReaderLogin = commandDatabaseLogin.ExecuteReader();
-                if (myReaderLogin.Read())
+               
+                try
                 {
-                    if (myReaderLogin.GetString(0) == login)
+                    MySqlCommand commandDatabaseLogin = new MySqlCommand(queryLogin, sqlCon);
+                    MySqlDataReader myReaderLogin = commandDatabaseLogin.ExecuteReader();
+                    if (myReaderLogin.Read())
                     {
-                        MessageBox.Show("Dany login już istnieje, proszę zmienić nazwę loginu", "Błąd");
-                        return false;
+                        if (myReaderLogin.GetString(0) == login)
+                        {
+                            MessageBox.Show("Dany login już istnieje, proszę zmienić nazwę loginu", "Błąd");
+                            return false;
+                        }
+                        else
+                        {
+                            return true;
+                        }
                     }
                     else
                     {
                         return true;
                     }
                 }
-                else
+                catch(MySqlException ex)
                 {
-                    return true;
+                    MessageBox.Show(ex.Message);
+                    return false;
                 }
+                catch (InvalidOperationException exs)
+                {
+                    MessageBox.Show(exs.Message);
+                    return false;
+                }
+
+
+
             }
 
             

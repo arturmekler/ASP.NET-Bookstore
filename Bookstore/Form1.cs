@@ -32,7 +32,15 @@ namespace Bookstore
 
             using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionString))
             {
-                sqlCon.Open();
+                try
+                {
+                    sqlCon.Open();
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
 
                 string login = loginTextBox.Text;
                 string password = passwordTextBox.Text;

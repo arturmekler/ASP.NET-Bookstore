@@ -63,6 +63,7 @@ namespace Bookstore
             using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionString))
             {
                 // writes name's client to label
+
                 sqlCon.Open();
 
                 string queryName = "SELECT nazwisko FROM users WHERE login='" + login + "' AND haslo='" + password + "'";
@@ -105,6 +106,7 @@ namespace Bookstore
         private void AddOrder(string MySQLConnectionString)
         {
             // adds the selected order 
+
             using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionString))
             {
                 sqlCon.Open();
@@ -128,6 +130,7 @@ namespace Bookstore
         private void deleteOrder(string MySQLConnectionString)
         {
             // deletes the selected order
+
             using (MySqlConnection sqlCon = new MySqlConnection(MySQLConnectionString))
             {
                 sqlCon.Open();
