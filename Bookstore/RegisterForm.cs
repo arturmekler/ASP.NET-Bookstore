@@ -114,7 +114,6 @@ namespace Bookstore
                 }
 
                 string queryLogin = "SELECT login FROM users WHERE login = '" + login+"'";
-
                
                 try
                 {

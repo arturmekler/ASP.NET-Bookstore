@@ -79,6 +79,11 @@ namespace Bookstore
             }
 
             orderTable(MySQLConnectionStringValue);
+
+            ordersDataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            searchResultDataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+           
+
         }
 
         private void searchQuery(string MySQLConnectionString)

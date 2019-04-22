@@ -55,6 +55,7 @@
             this.passwordRegTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.passwordRegTextBox.Location = new System.Drawing.Point(132, 103);
             this.passwordRegTextBox.Name = "passwordRegTextBox";
+            this.passwordRegTextBox.PasswordChar = '*';
             this.passwordRegTextBox.Size = new System.Drawing.Size(156, 26);
             this.passwordRegTextBox.TabIndex = 1;
             // 
